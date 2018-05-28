@@ -1,0 +1,837 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Python简介Python前世今生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  
+最新的TIOBE排行榜，Python赶超PHP占据第五！！！
+Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1篇-初识Py">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/第1篇-初识Py/index.html">
+<meta property="og:site_name" content="Yaro's Notes">
+<meta property="og:description" content="Python简介Python前世今生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  
+最新的TIOBE排行榜，Python赶超PHP占据第五！！！
+Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领">
+<meta property="og:image" content="https://i.loli.net/2017/07/13/5966ab032400e.png">
+<meta property="og:image" content="https://i.loli.net/2017/07/13/5966b0da1560a.png">
+<meta property="og:image" content="https://i.loli.net/2017/07/13/5966b9c2eeab5.png">
+<meta property="og:image" content="https://i.loli.net/2017/07/13/5966ba6563058.png">
+<meta property="og:image" content="https://i.loli.net/2017/07/13/5966baade2c28.png">
+<meta property="og:updated_time" content="2017-07-15T15:34:55.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1篇-初识Py">
+<meta name="twitter:description" content="Python简介Python前世今生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  
+最新的TIOBE排行榜，Python赶超PHP占据第五！！！
+Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领">
+<meta name="twitter:image" content="https://i.loli.net/2017/07/13/5966ab032400e.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/第1篇-初识Py/"/>
+
+
+
+
+
+  <title> 第1篇-初识Py | Yaro's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yaro's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录/备忘/练手</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/第1篇-初识Py/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yaro">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yaro's Notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yaro's Notes" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第1篇-初识Py
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T15:02:47+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/07/15/第1篇-初识Py/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/15/第1篇-初识Py/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Python简介"><a href="#Python简介" class="headerlink" title="Python简介"></a>Python简介</h3><h4 id="Python前世今生"><a href="#Python前世今生" class="headerlink" title="Python前世今生"></a>Python前世今生</h4><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  </p>
+<p>最新的TIOBE排行榜，Python赶超PHP占据第五！！！</p>
+<p>Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领域。目前业内几乎所有大中型互联网企业都在使用Python，如：Youtube、Dropbox、BT、Quora（中国知乎）、豆瓣、知乎、Google、Yahoo!、Facebook、NASA、百度、腾讯、汽车之家、美团等。互联网公司广泛使用Python来做的事一般有：<strong>自动化运维</strong>、<strong>自动化测试</strong>、<strong>大数据分析、爬虫、Web 等。</strong></p>
+<blockquote>
+<p>一言以蔽之：Python屌屌哒…</p>
+</blockquote>
+<h4 id="Python和其他语言对比"><a href="#Python和其他语言对比" class="headerlink" title="Python和其他语言对比"></a>Python和其他语言对比</h4><p>C语言： 代码编译得到 机器码 ，机器码在处理器上直接执行，每一条指令控制CPU工作</p>
+<a id="more"></a>
+<p>其他语言： 代码编译得到 字节码 ，虚拟机执行字节码并转换成机器码再后在处理器上执行</p>
+<ul>
+<li><p>Python 和 C  Python这门语言是由C开发而来</p>
+<p>对于使用：Python的类库齐全并且使用简洁，如果要实现同样的功能，Python 10行代码可以解决，C可能就需要100行甚至更多.<br>对于速度：Python的运行速度相较与C，绝逼是慢了</p>
+</li>
+<li><p>Python 和 Java、C#等</p>
+</li>
+</ul>
+<p>　　对于使用：Linux原装Python，其他语言没有；以上几门语言都有非常丰富的类库支持<br>　　对于速度：Python在速度上<strong>可能</strong>稍显逊色</p>
+<p>所以，Python和其他语言没有什么本质区别，其他区别在于：擅长某领域、人才丰富、先入为主。</p>
+<h4 id="Python的种类"><a href="#Python的种类" class="headerlink" title="Python的种类"></a>Python的种类</h4><ul>
+<li>Cpython<br>Python的官方版本，使用C语言实现，使用最为广泛，CPython实现会将源文件（py文件）转换成字节码文件（pyc文件），然后运行在Python虚拟机上。</li>
+<li>Jyhton<br>Python的Java实现，Jython会将Python代码动态编译成Java字节码，然后在JVM上运行。</li>
+<li>IronPython<br>Python的C#实现，IronPython将Python代码编译成C#字节码，然后在CLR上运行。（与Jython类似）</li>
+<li>PyPy（特殊）<br>Python实现的Python，将Python的字节码字节码再编译成机器码。</li>
+<li>RubyPython、Brython …</li>
+</ul>
+<p>PyPy，在Python的基础上对Python的字节码进一步处理，从而提升执行速度！</p>
+<p><img src="https://i.loli.net/2017/07/13/5966ab032400e.png" alt="PyPy速度优势" title="" width="650px"></p>
+<h3 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a>Python环境</h3><h4 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h4><ul>
+<li><p>windows：</p>
+<p>1、下载安装包:<a href="https://www.python.org/downloads/" target="_blank" rel="external">https://www.python.org/downloads/</a></p>
+<p>2、安装:</p>
+<p>3、环境变量</p>
+</li>
+<li><p>linux：</p>
+<p>基本默认都安装,使用<code>apt</code>(或其他)工具直接安装即可,需要特定版本的,自己编译(基于C语言,使用gcc)</p>
+</li>
+<li><p>iPython</p>
+<p>建议使用<code>iPython</code>,智能提示,还可以输入使用<code>shell</code>命令;重要的是提供<code>history</code>命令,在命令行调试好之后,直接辅助相应的代码到IDE即可.</p>
+</li>
+</ul>
+<h4 id="更新Python及设置默认版本"><a href="#更新Python及设置默认版本" class="headerlink" title="更新Python及设置默认版本"></a>更新Python及设置默认版本</h4><ul>
+<li><p>windows:</p>
+<p>卸载重装即可更新</p>
+</li>
+<li><p>linux:</p>
+<p>默认安装的python可能存在以来关系,不建议卸载,建议重复安装;</p>
+</li>
+<li><p>设置默认版本</p>
+<p>windows下通过环境变量,linux可以下通过<code>软连接</code></p>
+</li>
+</ul>
+<h3 id="Python-入门"><a href="#Python-入门" class="headerlink" title="Python 入门"></a>Python 入门</h3><h4 id="一、第一句Python代码"><a href="#一、第一句Python代码" class="headerlink" title="一、第一句Python代码"></a>一、第一句Python代码</h4><p>在 /home/dev/ 目录下创建 hello.py 文件，内容如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">"hello,world"</span></div></pre></td></tr></table></figure>
+<p>执行 hello.py 文件，即： </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python /home/dev/hello.py</div></pre></td></tr></table></figure>
+<p>python内部执行过程如下：</p>
+<p><img src="https://i.loli.net/2017/07/13/5966b0da1560a.png" alt="Python内部执行过程" width="700"></p>
+<h4 id="二、解释器"><a href="#二、解释器" class="headerlink" title="二、解释器"></a>二、解释器</h4><p>上一步中执行 python /home/dev/hello.py 时，明确的指出 hello.py 脚本由 python 解释器来执行。</p>
+<p>如果想要类似于执行shell脚本一样执行python脚本，例： <code>./hello.py</code>，那么就需要在 hello.py 文件的头部指定解释器，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="keyword">print</span> <span class="string">"hello,world"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明:通过env指定比通过python执行文件路径指定要好,不同机器python安装路径可能不同</p>
+</blockquote>
+<p>如此一来，执行： .<code>/hello.py</code> 即可。</p>
+<p>ps：执行前需给予 hello.py 执行权限，<code>chmod +x hello.py</code></p>
+<h4 id="三、内容编码"><a href="#三、内容编码" class="headerlink" title="三、内容编码"></a>三、内容编码</h4><p>python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill）</p>
+<p>ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言，其最多只能用 8 位来表示（一个字节），即：2**8 = 256，所以，ASCII码最多只能表示 256 个符号。</p>
+<p>ASCII码对照表: <a href="https://zh.wikipedia.org/wiki/ASCII" target="_blank" rel="external">https://zh.wikipedia.org/wiki/ASCII</a></p>
+<p>显然ASCII码无法将世界上的各种文字和符号全部表示，所以，就需要新出一种可以代表所有字符和符号的编码，即：Unicode</p>
+<p>Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，规定虽有的字符和符号最少由 16 位来表示（2个字节），即：2 **16 = 65536，<br>注：此处说的的是最少2个字节，可能更多</p>
+<p>UTF-8，是对Unicode编码的压缩和优化，他不再使用最少使用2个字节，而是将所有的字符和符号进行分类：ascii码中的内容用1个字节保存、欧洲的字符用2个字节保存，<strong>东亚的字符用3个字节保存</strong>…</p>
+<p>所以，python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill），如果是如下代码的话：</p>
+<p>报错：ascii码无法表示中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="keyword">print</span> <span class="string">"你好，世界"</span></div></pre></td></tr></table></figure>
+<p>改正：应该显示的告诉python解释器，用什么编码来执行源代码，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">print</span> <span class="string">"你好，世界"</span></div></pre></td></tr></table></figure>
+<h4 id="四、注释"><a href="#四、注释" class="headerlink" title="四、注释"></a>四、注释</h4><p>单行注释：<code># 被注释内容</code></p>
+<p>多行注释：<code>&quot;&quot;&quot; 被注释内容 &quot;&quot;&quot;</code></p>
+<h4 id="五、执行脚本传入参数"><a href="#五、执行脚本传入参数" class="headerlink" title="五、执行脚本传入参数"></a>五、执行脚本传入参数</h4><p>Python有大量的模块，从而使得开发Python程序非常简洁。类库有包括三种：</p>
+<ul>
+<li>Python内部提供的模块</li>
+<li>业内开源的模块</li>
+<li>程序员自己开发的模块</li>
+</ul>
+<p>Python内部提供一个 sys 的模块，其中的 sys.argv 用来捕获执行执行python脚本时传入的参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">print</span> sys.argv</div></pre></td></tr></table></figure>
+<h4 id="六、-pyc-文件"><a href="#六、-pyc-文件" class="headerlink" title="六、 pyc 文件"></a>六、 pyc 文件</h4><p>执行Python代码时，如果导入了其他的 .py 文件，那么，执行过程中会自动生成一个与其同名的 .pyc 文件，该文件就是Python解释器编译之后产生的字节码。</p>
+<p>ps：代码经过编译可以产生字节码；字节码通过反编译也可以得到代码。</p>
+<h4 id="七、变量"><a href="#七、变量" class="headerlink" title="七、变量"></a>七、变量</h4><p>1、声明变量: <code>name = &quot;wupeiqi&quot;</code>,变量名为： name，变量name的值为：”wupeiqi”</p>
+<p>变量的作用：昵称，其代指内存里某个地址中保存的内容:</p>
+<p><img src="https://i.loli.net/2017/07/13/5966b9c2eeab5.png" alt="声明变量原理" width="400"></p>
+<p>变量定义的规则：</p>
+<ul>
+<li>变量名只能是 字母、数字或下划线的任意组合</li>
+<li>变量名的第一个字符不能是数字</li>
+<li>以下关键字不能声明为变量名<br>[‘and’, ‘as’, ‘assert’, ‘break’, ‘class’, ‘continue’, ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘exec’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, ‘is’, ‘lambda’, ‘not’, ‘or’, ‘pass’, ‘print’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’]</li>
+</ul>
+<p>2、变量的赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name1 = <span class="string">"yaro"</span></div><div class="line">name2 = <span class="string">"alex"</span></div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2017/07/13/5966ba6563058.png" alt="" width="400px"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name1 = <span class="string">"yaro"</span></div><div class="line">name2 = name</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2017/07/13/5966baade2c28.png" alt="" width="400px"></p>
+<h4 id="八、输入"><a href="#八、输入" class="headerlink" title="八、输入"></a>八、输入</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># 将用户输入的内容赋值给 name 变量</span></div><div class="line">name = raw_input(<span class="string">"请输入用户名："</span>)</div><div class="line"><span class="comment">#python3的输入为 input</span></div><div class="line"><span class="comment"># 打印输入的内容</span></div><div class="line"><span class="keyword">print</span> name</div></pre></td></tr></table></figure>
+<p>输入密码时，如果想要不可见，需要利用getpass 模块中的 getpass方法，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line">  </div><div class="line"><span class="keyword">import</span> getpass</div><div class="line">  </div><div class="line"><span class="comment"># 将用户输入的内容赋值给 name 变量</span></div><div class="line">pwd = getpass.getpass(<span class="string">"请输入密码："</span>)</div><div class="line">  </div><div class="line"><span class="comment"># 打印输入的内容</span></div><div class="line"><span class="keyword">print</span> pwd</div></pre></td></tr></table></figure>
+<h4 id="九、流程控制和缩进"><a href="#九、流程控制和缩进" class="headerlink" title="九、流程控制和缩进"></a>九、流程控制和缩进</h4><p><strong>需求一、用户登陆验证</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: encoding -*-</span></div><div class="line">  </div><div class="line"><span class="comment"># 提示输入用户名和密码</span></div><div class="line"><span class="comment"># 验证用户名和密码</span></div><div class="line"><span class="comment">#     如果错误，则输出用户名或密码错误</span></div><div class="line"><span class="comment">#     如果成功，则输出 欢迎，XXX!</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> getpass</div><div class="line">name = raw_input(<span class="string">'请输入用户名：'</span>)</div><div class="line">pwd = getpass.getpass(<span class="string">'请输入密码：'</span>)</div><div class="line">  </div><div class="line"><span class="keyword">if</span> name == <span class="string">"alex"</span> <span class="keyword">and</span> pwd == <span class="string">"cmd"</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"欢迎，alex！"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"用户名和密码错误"</span></div></pre></td></tr></table></figure>
+<p><strong>需求二、根据用户输入内容输出其权限</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 根据用户输入内容打印其权限</span></div><div class="line">  </div><div class="line"><span class="comment"># alex --&gt; 超级管理员</span></div><div class="line"><span class="comment"># eric --&gt; 普通管理员</span></div><div class="line"><span class="comment"># tony,rain --&gt; 业务主管</span></div><div class="line"><span class="comment"># 其他 --&gt; 普通用户</span></div><div class="line">name = raw_input(<span class="string">'请输入用户名：'</span>)</div><div class="line"><span class="keyword">if</span> name == <span class="string">"alex"</span>：</div><div class="line">    <span class="keyword">print</span> <span class="string">"超级管理员"</span></div><div class="line"><span class="keyword">elif</span> name == <span class="string">"eric"</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"普通管理员"</span></div><div class="line"><span class="keyword">elif</span> name == <span class="string">"tony"</span> <span class="keyword">or</span> name == <span class="string">"rain"</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"业务主管"</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"普通用户"</span></div></pre></td></tr></table></figure>
+<h4 id="十、while循环"><a href="#十、while循环" class="headerlink" title="十、while循环"></a>十、while循环</h4><p>1、基本循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> 条件:</div><div class="line">    <span class="comment"># 循环体</span></div></pre></td></tr></table></figure>
+<p>2、break</p>
+<p>break用于退出循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"123"</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"456"</span></div></pre></td></tr></table></figure>
+<p>3、continue</p>
+<p>continue用于退出当前循环，继续下一次循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">"123"</span></div><div class="line">    <span class="keyword">continue</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"456"</span></div></pre></td></tr></table></figure>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p>1、使用while循环输入 1 2 3 4 5 6     8 9 10</p>
+<p>2、求1-100的所有数的和</p>
+<p>3、输出 1-100 内的所有奇数</p>
+<p>4、输出 1-100 内的所有偶数</p>
+<p>5、求1-2+3-4+5 … 99的所有数的和</p>
+<p>6、用户登陆（三次机会重试）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/webchat-reward.jpg" alt="Yaro WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/alipay-reward.jpg" alt="Yaro Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/07/windows下搭建类linux环境/" rel="next" title="windows下搭建类linux环境">
+                <i class="fa fa-chevron-left"></i> windows下搭建类linux环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/15/第2篇-Py基础-基本数据类型/" rel="prev" title="第2篇-Py基础-基本数据类型">
+                第2篇-Py基础-基本数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/15/第1篇-初识Py/"
+           data-title="第1篇-初识Py" data-url="http://yoursite.com/2017/07/15/第1篇-初识Py/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png"
+               alt="Yaro" />
+          <p class="site-author-name" itemprop="name">Yaro</p>
+          <p class="site-description motion-element" itemprop="description">生活=不断尝试,不断犯错</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaro97" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wyzh97" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mryaro" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python简介"><span class="nav-number">1.</span> <span class="nav-text">Python简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python前世今生"><span class="nav-number">1.1.</span> <span class="nav-text">Python前世今生</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python和其他语言对比"><span class="nav-number">1.2.</span> <span class="nav-text">Python和其他语言对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python的种类"><span class="nav-number">1.3.</span> <span class="nav-text">Python的种类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python环境"><span class="nav-number">2.</span> <span class="nav-text">Python环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Python"><span class="nav-number">2.1.</span> <span class="nav-text">安装Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新Python及设置默认版本"><span class="nav-number">2.2.</span> <span class="nav-text">更新Python及设置默认版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-入门"><span class="nav-number">3.</span> <span class="nav-text">Python 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、第一句Python代码"><span class="nav-number">3.1.</span> <span class="nav-text">一、第一句Python代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、解释器"><span class="nav-number">3.2.</span> <span class="nav-text">二、解释器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、内容编码"><span class="nav-number">3.3.</span> <span class="nav-text">三、内容编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、注释"><span class="nav-number">3.4.</span> <span class="nav-text">四、注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、执行脚本传入参数"><span class="nav-number">3.5.</span> <span class="nav-text">五、执行脚本传入参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、-pyc-文件"><span class="nav-number">3.6.</span> <span class="nav-text">六、 pyc 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、变量"><span class="nav-number">3.7.</span> <span class="nav-text">七、变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八、输入"><span class="nav-number">3.8.</span> <span class="nav-text">八、输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九、流程控制和缩进"><span class="nav-number">3.9.</span> <span class="nav-text">九、流程控制和缩进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十、while循环"><span class="nav-number">3.10.</span> <span class="nav-text">十、while循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习题"><span class="nav-number">4.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yaro</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yaro97githubio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

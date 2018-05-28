@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="manjaro,xfce,archlinux,xfce美化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+遇到问题请参考ArchLinux官网:https://wiki.archlinux.org
+刻录U盘（建议windows下使用Rufus刻录软件），安装即可；值得注意的是，在进入U盘的界面可以选择驱动，先尝试闭源驱动（nofree），倘若无法进入系统，再尝试开源驱动即可。
+分区相关我的硬盘主分区只能四个（其实是三个，预留一个给逻辑分区）。
+双系统分区如下：Windows占用三个主分区（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manjaro-xfce安装记录">
+<meta property="og:url" content="http://yoursite.com/2018/05/28/manjaro-xfce安装记录/index.html">
+<meta property="og:site_name" content="Yaro's Notes">
+<meta property="og:description" content="[TOC]
+遇到问题请参考ArchLinux官网:https://wiki.archlinux.org
+刻录U盘（建议windows下使用Rufus刻录软件），安装即可；值得注意的是，在进入U盘的界面可以选择驱动，先尝试闭源驱动（nofree），倘若无法进入系统，再尝试开源驱动即可。
+分区相关我的硬盘主分区只能四个（其实是三个，预留一个给逻辑分区）。
+双系统分区如下：Windows占用三个主分区（">
+<meta property="og:updated_time" content="2018-05-28T14:07:19.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="manjaro-xfce安装记录">
+<meta name="twitter:description" content="[TOC]
+遇到问题请参考ArchLinux官网:https://wiki.archlinux.org
+刻录U盘（建议windows下使用Rufus刻录软件），安装即可；值得注意的是，在进入U盘的界面可以选择驱动，先尝试闭源驱动（nofree），倘若无法进入系统，再尝试开源驱动即可。
+分区相关我的硬盘主分区只能四个（其实是三个，预留一个给逻辑分区）。
+双系统分区如下：Windows占用三个主分区（">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/28/manjaro-xfce安装记录/"/>
+
+
+
+
+
+  <title> manjaro-xfce安装记录 | Yaro's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yaro's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录/备忘/练手</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/manjaro-xfce安装记录/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yaro">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yaro's Notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yaro's Notes" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                manjaro-xfce安装记录
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T09:08:16+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2018/05/28/manjaro-xfce安装记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/28/manjaro-xfce安装记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<p>遇到问题请参考<strong>ArchLinux官网</strong>:<a href="https://wiki.archlinux.org" target="_blank" rel="external">https://wiki.archlinux.org</a></p>
+<p>刻录U盘（建议windows下使用Rufus刻录软件），安装即可；值得注意的是，在进入U盘的界面可以选择驱动，先尝试闭源驱动（nofree），倘若无法进入系统，再尝试开源驱动即可。</p>
+<h2 id="分区相关"><a href="#分区相关" class="headerlink" title="分区相关"></a>分区相关</h2><p>我的硬盘主分区只能四个（其实是三个，预留一个给逻辑分区）。</p>
+<p>双系统分区如下：Windows占用三个主分区（<code>预留盘</code>- <code>C盘</code> - <code>D盘</code>），Linux只能在逻辑分区中再细分。</p>
+<p>boot：500M，swap：4G，/：50G，home：剩余其他</p>
+<h2 id="修改源，更新系统"><a href="#修改源，更新系统" class="headerlink" title="修改源，更新系统"></a>修改源，更新系统</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo pacman-mirrors -i -c China -m rank  <span class="comment"># 这个会对国内的源进行测速排名，然后弹出图形化的设置界面，然后根据上图的访问速度，勾选想要的源，</span></div><div class="line"></div><div class="line"><span class="comment">## 显示pacman/pacaur颜色：启动 /etc/pacman.conf 中的 Color 和 VerbosePkgLists 选项</span></div><div class="line"></div><div class="line"><span class="comment">## 当然除了官方源之外，还可以添加aurlinux源，具体可以google一下，但是不建议这样，以防滚挂。</span></div><div class="line"></div><div class="line">sudo pacman -Syyu <span class="comment"># 更新软件包db并更新所有软件（即系统）；</span></div><div class="line"></div><div class="line">sudo pacman -Sv yay/pacaur/aurman(aur) <span class="comment"># 当然还可以选择yaourt(可以更改为清华源)；</span></div><div class="line"><span class="comment"># 貌似aur服务器在德国，不过还能接受；</span></div><div class="line"><span class="comment"># 倘若在安装aur时遇到错误（fakeroot等），记得安装base-devel编译包；</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo pacman -S fcitx-sogoupinyin（aur） fcitx-im fcitx-configtool</div><div class="line"><span class="comment"># fcitx-sogoupinyin依赖qtwebkit，安装要是出现问题（安装无法完成），建议先单独安装qtwebkit-bin</span></div><div class="line"></div><div class="line"><span class="comment"># .xprofile (如果遇到有些软件不能输入中文，再添加到.bash_profile)是配置窗口打开时运行的命令,写入如下内容：</span></div><div class="line">sudo <span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"export GTK_IM_MODULE=fcitx\nexport QT_IM_MODULE=fcitx\nexport XMODIFIERS=@im=fcitx"</span> &gt;&gt; ~/.xprofile</div><div class="line"></div><div class="line"><span class="comment">#对于jetbrians系列fcitx无法跟随的情况 fcitx输入法配置&gt;附加组件&gt;勾选高级&gt;xim前端&gt;勾选on the spot</span></div><div class="line"></div><div class="line"><span class="comment">## 注销用户重新登录即可使用</span></div></pre></td></tr></table></figure>
+<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">pacaur -Sv zsh</div><div class="line"></div><div class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></div><div class="line"><span class="comment"># 安装oh my zsh；</span></div><div class="line"></div><div class="line"><span class="comment"># 设置oh-my-zsh主题为默认的 ys；</span></div><div class="line"><span class="comment"># 或者使用spaceship主题；</span></div><div class="line">官网：https://github.com/denysdovhan/spaceship-prompt</div><div class="line"></div><div class="line"><span class="comment"># 启用插件：git sudo history autojump zsh-autosuggestions zsh-syntax-highlighting 等；</span></div><div class="line">vim ~/.zshrc</div><div class="line">chsh <span class="_">-s</span> /usr/bin/zsh</div><div class="line"></div><div class="line"><span class="comment"># 安装插件：zsh-autosuggestions（仿fish自动提示，右方向键补全所有，ctrl+右方向键-补全字符）</span></div><div class="line">git <span class="built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions</div><div class="line"><span class="comment"># 添加到.zshrc插件：plugins=(zsh-autosuggestions)</span></div><div class="line"><span class="comment"># 重启teminal</span></div><div class="line"></div><div class="line"><span class="comment"># 安装插件：zsh-syntax-highlighting（仿fish自动高亮）</span></div><div class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</div><div class="line"><span class="comment"># 添加到.zshrc插件：plugins=(zsh-syntax-highlighting)</span></div><div class="line"><span class="built_in">source</span> ~/.zshrc</div><div class="line"></div><div class="line"><span class="comment">## 注销用户重新登录即可使用</span></div></pre></td></tr></table></figure>
+<h2 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo pacman -S --noconfirm wqy-microhei &amp;&amp; <span class="built_in">fc</span>-cache -fv</div><div class="line"><span class="comment"># 外观》字体：设置应用程序默认字体。</span></div><div class="line"><span class="comment"># qt5设置》字体：设置qt窗体的默认字体</span></div><div class="line"></div><div class="line"><span class="comment"># 其他字体选用</span></div><div class="line">sudo pacman -Sv wqy-microhei-lite wqy-bitmapfont wqy-zenhei</div><div class="line">sudo pacman -Sv adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts noto-fonts-cjk</div></pre></td></tr></table></figure>
+<h2 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pacman -Rsnv firefox thunderbird gimp hexchat xfburn xfce4-dict catfish pidgin mousepad vlc-nightly audacious xfce4-screenshooter</div></pre></td></tr></table></figure>
+<p>假如因为依赖问题卸载掉系统图片管理器<code>ristretto</code>(系统自带图片浏览)，再安装即可。</p>
+<h2 id="安装常用软件"><a href="#安装常用软件" class="headerlink" title="安装常用软件"></a>安装常用软件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Repo软件：</span></div><div class="line">sudo pacman -Sv gvim base-devel autojump git axel tmux mpv htop mlocate goldendict shadowsocks proxychains-ng  the_silver_searcher(ag) filezilla</div><div class="line"></div><div class="line"><span class="comment"># aur软件：</span></div><div class="line">pacaur -Sv pycharm-professional xmind typora nutstore chromium(google-chrome) deepin-screenshot electronic-wechat vsftpd(ftp服务器) gimp qbittorrent(bt搜索下载) obs-studio chmsee gpick（取色配色） peek（录屏为gif软件） deepin-terminal ieaseMusic(github) sublime-text-dev-imfix2 </div><div class="line"></div><div class="line"><span class="comment"># 其他软件</span></div><div class="line">dbeaver:mysql等数据库连接软件</div><div class="line">mariadb：务必参考官网：https://wiki.archlinux.org/index.php/MySQL</div><div class="line">redis：redis服务器 https://wiki.archlinux.org/index.php/Redis</div><div class="line">mongodb mongodb-tools:MongoDB数据库相关软件 https://wiki.archlinux.org/index.php/MongoDB</div><div class="line">Anki:https://apps.ankiweb.net/</div><div class="line">zeal:离线文档查看软件</div><div class="line">字体:ttf-hack ttf-ms-fonts</div><div class="line">kid3-qt:音频meta信息编辑</div><div class="line"></div><div class="line"><span class="comment"># 下载软件</span></div><div class="line">yay -Sv uget aria2</div><div class="line"><span class="comment"># 打开uget》编辑》设置》插件》启用aria2</span></div><div class="line"><span class="comment"># 分类》属性》默认一般设置》最大连接数&gt;5</span></div></pre></td></tr></table></figure>
+<h2 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h2><p>系统字体：Microsoft YaHei<br>终端字体：YaHei Monaco Hybird Regular</p>
+<h2 id="Dock"><a href="#Dock" class="headerlink" title="Dock"></a>Dock</h2><p>软件：<code>pacaur -S plank</code><br>主题：transparent（系统自带）<br>选项：<code>ctrl+鼠标右键</code><br>有些软件无法添加logo：用<code>thunar</code>（文件管理器）打开<code>/usr/share/application</code>，直接拖拽即可。<br>plank阴影解决办法：’<code>Setting &gt; Window manager Tweaks &gt; Compositor</code>‘ and uncheck ‘<code>Show shadows under dock windows</code>‘.<br>开机启动：系统自带软件 <code>Session and Startup</code> 添加<code>plank</code>开机启动。</p>
+<h2 id="panal设置"><a href="#panal设置" class="headerlink" title="panal设置"></a>panal设置</h2><p>左上角：<code>Whisker Menu</code>，<code>Directory Menu</code></p>
+<p>右上角：<code>Notification Area</code>，<code>PulseAudio Plugin</code>, <code>Clock</code>， <code>Action Buttons</code></p>
+<h2 id="可选dm软件：lightdm"><a href="#可选dm软件：lightdm" class="headerlink" title="可选dm软件：lightdm"></a>可选dm软件：lightdm</h2><p>假如系统软件dm崩溃的话，可以自己安装lightdm。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pacaur -Sv lightdm-gtk-greeter <span class="comment"># 依赖lightdm；</span></div><div class="line">systemctl <span class="built_in">enable</span> lightdm</div><div class="line">systemctl start lightdm</div></pre></td></tr></table></figure>
+<h2 id="SS启动"><a href="#SS启动" class="headerlink" title="SS启动"></a>SS启动</h2><p>在目录<code>/etc/shadowsocks/</code>下面，复制<code>example.json</code>为<code>config.json</code>。</p>
+<p>启动：<code>sudo systemctl start/enable shadowsocks@config</code></p>
+<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><p>gtk主题：<code>pacaur -S adapta-gtk-theme</code></p>
+<p>xfwm4窗口标题主题：<code>pacaur -S gtk-arc-flatabulous-theme-git</code></p>
+<p>icon主题：<code>pacaur -S la-capitaine-icon-theme-git</code>(貌似github下载速度更快)；</p>
+<p>xfce4-terminal配色：参考 <a href="https://github.com/osheep/Xfce4-terminal-colors" target="_blank" rel="external">https://github.com/osheep/Xfce4-terminal-colors</a>   </p>
+<h2 id="更换grub"><a href="#更换grub" class="headerlink" title="更换grub"></a>更换grub</h2><p><code>yay -Sv grub2-theme-vimix-git</code></p>
+<p>修改<code>/etc/default/grub</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRUB_THEME=<span class="string">"/path/to/gfxtheme"</span> 为：</div><div class="line">GRUB_THEME=<span class="string">"/boot/grub/themes/Vimix/theme.txt"</span>`</div></pre></td></tr></table></figure>
+<p>修改<code>/boot/grub/themes/Vimix/</code>中的背景</p>
+<p>更新grub配置：<code>grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Ctrl + Alt + Q： deepin-screenshot</div><div class="line">Super + E ： thunar</div><div class="line">Super + A ： xfce4-popup-whiskermenu</div><div class="line">Super + T ： xfce4-terminal</div></pre></td></tr></table></figure>
+<blockquote>
+<p>记得删除系统设置里自带的快捷键(和pycharm、vscode冲突)：</p>
+<p>1、Settings - Window Manager ;</p>
+<p>2、Settings - Keyboard ;</p>
+<p>3、Settings - Settings Editor.</p>
+</blockquote>
+<h2 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h2><p>开机开启Num Lock：Settings - settings Editor - keyboards ,设置Numlock、RestoreNumlock为True。</p>
+<p>系统时间显示不对：时区显示的是上海，但是却是0000时区；解决办法：在sudo vim /etc/profile文件中添加export TZ=’CST-8’  。</p>
+<h2 id="安装QQ"><a href="#安装QQ" class="headerlink" title="安装QQ"></a>安装QQ</h2><p>有两种方式：</p>
+<blockquote>
+<p>前提：pacaur -Sv wine winetricks wine-mono wine_gecko</p>
+</blockquote>
+<p>1、使用winetricks-zh安装基本可以使用，遇到问题可以参考下面。</p>
+<p>2、参考： <a href="https://github.com/askme765cs/Wine-QQ" target="_blank" rel="external">https://github.com/askme765cs/Wine-QQ</a></p>
+<p><strong>请务必查看如下内容：，有必要的话，参考“”</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 更改.zshrc，默认安装bit32wine，添加如下内容：</span></div><div class="line"><span class="built_in">export</span> WINEPREFIX=<span class="variable">$HOME</span>/.config/wine/</div><div class="line"><span class="built_in">export</span> WINEARCH=win32</div><div class="line"></div><div class="line"><span class="built_in">source</span> .zshrc <span class="comment"># 使.zshrc生效</span></div><div class="line"></div><div class="line">pacaur -Sv wine wine-mono wine_gecko winetricks-zh-git</div><div class="line"><span class="comment"># wine-mono # 用于运行依赖Microsoft's .NET Framework的程序</span></div><div class="line"><span class="comment"># wine_gecko # 用于运行Microsoft's Internet Explorer的程序</span></div><div class="line"><span class="comment"># winetricks # 安装 ddl、组件、字体等，中文版的是自带一些国内的软件等；</span></div><div class="line"><span class="comment"># 参考：https://github.com/hillwoodroc/winetricks-zh</span></div><div class="line"></div><div class="line">locate -ir <span class="string">"腾讯.*tim.desktop"</span> <span class="comment"># 查找快捷图标位置，修改无法输入中文bug。</span></div><div class="line"><span class="comment"># 插入如下内容：</span></div><div class="line"><span class="built_in">export</span> GTK_IM_MODULE=fcitx</div><div class="line"><span class="built_in">export</span> QT_IM_MODULE=fcitx</div><div class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/webchat-reward.jpg" alt="Yaro WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/alipay-reward.jpg" alt="Yaro Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/manjaro/" rel="tag"># manjaro</a>
+          
+            <a href="/tags/xfce/" rel="tag"># xfce</a>
+          
+            <a href="/tags/archlinux/" rel="tag"># archlinux</a>
+          
+            <a href="/tags/xfce美化/" rel="tag"># xfce美化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/02/yaro_vitae/" rel="next" title="个人简历">
+                <i class="fa fa-chevron-left"></i> 个人简历
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/05/28/manjaro-xfce安装记录/"
+           data-title="manjaro-xfce安装记录" data-url="http://yoursite.com/2018/05/28/manjaro-xfce安装记录/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png"
+               alt="Yaro" />
+          <p class="site-author-name" itemprop="name">Yaro</p>
+          <p class="site-description motion-element" itemprop="description">生活=不断尝试,不断犯错</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaro97" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wyzh97" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mryaro" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分区相关"><span class="nav-number">1.</span> <span class="nav-text">分区相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改源，更新系统"><span class="nav-number">2.</span> <span class="nav-text">修改源，更新系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装搜狗输入法"><span class="nav-number">3.</span> <span class="nav-text">安装搜狗输入法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装zsh"><span class="nav-number">4.</span> <span class="nav-text">安装zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文字体"><span class="nav-number">5.</span> <span class="nav-text">中文字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载软件"><span class="nav-number">6.</span> <span class="nav-text">卸载软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装常用软件"><span class="nav-number">7.</span> <span class="nav-text">安装常用软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体设置"><span class="nav-number">8.</span> <span class="nav-text">字体设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dock"><span class="nav-number">9.</span> <span class="nav-text">Dock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#panal设置"><span class="nav-number">10.</span> <span class="nav-text">panal设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可选dm软件：lightdm"><span class="nav-number">11.</span> <span class="nav-text">可选dm软件：lightdm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SS启动"><span class="nav-number">12.</span> <span class="nav-text">SS启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题设置"><span class="nav-number">13.</span> <span class="nav-text">主题设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换grub"><span class="nav-number">14.</span> <span class="nav-text">更换grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用快捷键"><span class="nav-number">15.</span> <span class="nav-text">常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他事项"><span class="nav-number">16.</span> <span class="nav-text">其他事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装QQ"><span class="nav-number">17.</span> <span class="nav-text">安装QQ</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yaro</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yaro97githubio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、概述1、什么是数据库 ？　答：数据的仓库，如：在ATM的示例中我们创建了一个 db 目录，称其为数据库
+2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？　答：他们均是一个软件，都有两个主要的功能：
+
+a. 将数据保存到文件或内存
+b. 接收特定的命令，然后对文件进行相应的操作
+
+PS：如果有了以上软件，无须自己再去创建文件和文件夹，而是直接传递">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第10篇-MySQL-入门">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/第10篇-MySQL-入门/index.html">
+<meta property="og:site_name" content="Yaro's Notes">
+<meta property="og:description" content="一、概述1、什么是数据库 ？　答：数据的仓库，如：在ATM的示例中我们创建了一个 db 目录，称其为数据库
+2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？　答：他们均是一个软件，都有两个主要的功能：
+
+a. 将数据保存到文件或内存
+b. 接收特定的命令，然后对文件进行相应的操作
+
+PS：如果有了以上软件，无须自己再去创建文件和文件夹，而是直接传递">
+<meta property="og:updated_time" content="2017-07-15T15:38:40.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第10篇-MySQL-入门">
+<meta name="twitter:description" content="一、概述1、什么是数据库 ？　答：数据的仓库，如：在ATM的示例中我们创建了一个 db 目录，称其为数据库
+2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？　答：他们均是一个软件，都有两个主要的功能：
+
+a. 将数据保存到文件或内存
+b. 接收特定的命令，然后对文件进行相应的操作
+
+PS：如果有了以上软件，无须自己再去创建文件和文件夹，而是直接传递">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/第10篇-MySQL-入门/"/>
+
+
+
+
+
+  <title> 第10篇-MySQL-入门 | Yaro's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yaro's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录/备忘/练手</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/第10篇-MySQL-入门/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yaro">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yaro's Notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yaro's Notes" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第10篇-MySQL-入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T15:30:47+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/07/15/第10篇-MySQL-入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/15/第10篇-MySQL-入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><h4 id="1、什么是数据库-？"><a href="#1、什么是数据库-？" class="headerlink" title="1、什么是数据库 ？"></a>1、什么是数据库 ？</h4><p>　答：数据的仓库，如：在ATM的示例中我们创建了一个 db 目录，称其为数据库</p>
+<h4 id="2、什么是-MySQL、Oracle、SQLite、Access、MS-SQL-Server等-？"><a href="#2、什么是-MySQL、Oracle、SQLite、Access、MS-SQL-Server等-？" class="headerlink" title="2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？"></a>2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？</h4><p>　答：他们均是一个软件，都有两个主要的功能：</p>
+<ul>
+<li>a. 将数据保存到文件或内存</li>
+<li>b. 接收特定的命令，然后对文件进行相应的操作</li>
+</ul>
+<p>PS：如果有了以上软件，无须自己再去创建文件和文件夹，而是直接传递 命令 给上述软件，让其来进行文件操作，他们统称为数据库管理系统（DBMS，Database Management System）</p>
+<a id="more"></a>
+<h4 id="3、什么是SQL-？"><a href="#3、什么是SQL-？" class="headerlink" title="3、什么是SQL ？"></a>3、什么是SQL ？</h4><p>　答：上述提到MySQL等软件可以接受命令，并做出相应的操作，由于命令中可以包含删除文件、获取文件内容等众多操作，对于编写的命令就是是SQL语句。SQL是结构化语言（Structured Query Language）的缩写，SQL是一种专门用来与数据库通信的语言。</p>
+<h3 id="二、下载安装"><a href="#二、下载安装" class="headerlink" title="二、下载安装"></a>二、下载安装</h3><p>MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。</p>
+<p>想要使用MySQL来存储并操作数据，则需要做几件事情：</p>
+<ul>
+<li>a. 安装MySQL服务端</li>
+<li>b. 安装MySQL客户端</li>
+<li>b. 【客户端】连接【服务端】</li>
+<li>c. 【客户端】发送命令给【服务端MySQL】服务的接受命令并执行相应操作(增删改查等)</li>
+</ul>
+<h4 id="Window版本"><a href="#Window版本" class="headerlink" title="Window版本"></a>Window版本</h4><h5 id="1、下载"><a href="#1、下载" class="headerlink" title="1、下载"></a>1、下载</h5><p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/</a></p>
+<h5 id="2、解压"><a href="#2、解压" class="headerlink" title="2、解压"></a>2、解压</h5><p>如果想要让MySQL安装在指定目录，那么就将解压后的文件夹移动到指定目录，如：C:\mysql-5.7.16-winx64</p>
+<h5 id="3、初始化"><a href="#3、初始化" class="headerlink" title="3、初始化"></a>3、初始化</h5><p>MySQL解压后的 bin 目录下有一大堆的可执行文件，执行如下命令初始化数据：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> c:\mysql-5.7.16-winx64\bin</div><div class="line">mysqld --initialize-insecure</div></pre></td></tr></table></figure>
+<h5 id="4、启动MySQL服务"><a href="#4、启动MySQL服务" class="headerlink" title="4、启动MySQL服务"></a>4、启动MySQL服务</h5><p>执行命令从而启动MySQL服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入可执行文件目录</span></div><div class="line"><span class="built_in">cd</span> c:\mysql-5.7.16-winx64\bin</div><div class="line"><span class="comment"># 启动MySQL服务</span></div><div class="line">mysqld</div></pre></td></tr></table></figure>
+<h5 id="5、启动MySQL客户端并连接MySQL服务"><a href="#5、启动MySQL客户端并连接MySQL服务" class="headerlink" title="5、启动MySQL客户端并连接MySQL服务"></a>5、启动MySQL客户端并连接MySQL服务</h5><p>由于初始化时使用的【mysqld –initialize-insecure】命令，其默认未给root账户设置密码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入可执行文件目录</span></div><div class="line"><span class="built_in">cd</span> c:\mysql-5.7.16-winx64\bin</div><div class="line"><span class="comment"># 连接MySQL服务器</span></div><div class="line">mysql -u root -p</div><div class="line"><span class="comment"># 提示请输入密码，直接回车</span></div></pre></td></tr></table></figure>
+<p>到此为止，MySQL服务端已经安装成功并且客户端已经可以连接上，以后再操作MySQL时，只需要重复上述4、5步骤即可。但是，在4、5步骤中重复的进入可执行文件目录比较繁琐，如想日后操作简便，可以做如下操作。</p>
+<p>a. 添加环境变量</p>
+<p>将MySQL可执行文件添加到环境变量中，从而执行执行命令即可</p>
+<p>上一步解决了一些问题，但不够彻底，因为在执行【mysqd】启动MySQL服务器时，当前终端会被hang住，那么做一下设置即可解决此问题：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 制作MySQL的Windows服务，在终端执行此命令：</span></div><div class="line"><span class="string">"c:\mysql-5.7.16-winx64\bin\mysqld"</span> --install</div><div class="line"> </div><div class="line"><span class="comment"># 移除MySQL的Windows服务，在终端执行此命令：</span></div><div class="line"><span class="string">"c:\mysql-5.7.16-winx64\bin\mysqld"</span> --remove</div></pre></td></tr></table></figure>
+<p>注册成服务之后，以后再启动和关闭MySQL服务时，仅需执行如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 启动MySQL服务</span></div><div class="line">net start mysql</div><div class="line"><span class="comment"># 关闭MySQL服务</span></div><div class="line">net stop mysql</div></pre></td></tr></table></figure>
+<h4 id="Linux版本"><a href="#Linux版本" class="headerlink" title="Linux版本"></a>Linux版本</h4><p>安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql-server</div></pre></td></tr></table></figure>
+<p>服务端启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql.server start</div></pre></td></tr></table></figure>
+<p>客户端连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#连接：</div><div class="line">mysql -h host -u user -p</div><div class="line"> </div><div class="line">#常见错误：</div><div class="line">ERROR 2002 (HY000): Can&apos;t connect to local MySQL server through socket &apos;/tmp/mysql.sock&apos; (2), it means that the MySQL server daemon (Unix) or service (Windows) is not running.</div><div class="line"></div><div class="line">#退出：</div><div class="line">QUIT 或者 Control+D</div></pre></td></tr></table></figure>
+<h3 id="三、数据库操作"><a href="#三、数据库操作" class="headerlink" title="三、数据库操作"></a>三、数据库操作</h3><h4 id="1、显示数据库"><a href="#1、显示数据库" class="headerlink" title="1、显示数据库"></a>1、显示数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW DATABASES;</div></pre></td></tr></table></figure>
+<p>默认数据库：<br>　　mysql - 用户权限相关数据<br>　　test - 用于用户测试数据<br>　　information_schema - MySQL本身架构相关数据</p>
+<h4 id="2、创建数据库"><a href="#2、创建数据库" class="headerlink" title="2、创建数据库"></a>2、创建数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># utf-8</div><div class="line">CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</div><div class="line"> </div><div class="line"># gbk</div><div class="line">CREATE DATABASE 数据库名称 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;</div></pre></td></tr></table></figure>
+<h4 id="3、使用数据库"><a href="#3、使用数据库" class="headerlink" title="3、使用数据库"></a>3、使用数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">USE db_name;</div></pre></td></tr></table></figure>
+<p>显示当前使用的数据库中所有表：SHOW TABLES;</p>
+<h4 id="4、用户管理"><a href="#4、用户管理" class="headerlink" title="4、用户管理"></a>4、用户管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">创建用户</div><div class="line">    create user &apos;用户名&apos;@&apos;IP地址&apos; identified by &apos;密码&apos;;</div><div class="line">删除用户</div><div class="line">    drop user &apos;用户名&apos;@&apos;IP地址&apos;;</div><div class="line">修改用户</div><div class="line">    rename user &apos;用户名&apos;@&apos;IP地址&apos;; to &apos;新用户名&apos;@&apos;IP地址&apos;;;</div><div class="line">修改密码</div><div class="line">    set password for &apos;用户名&apos;@&apos;IP地址&apos; = Password(&apos;新密码&apos;)</div><div class="line">  </div><div class="line">PS：用户权限相关数据保存在mysql数据库的user表中，所以也可以直接对其进行操作（不建议）</div></pre></td></tr></table></figure>
+<h4 id="5、授权管理"><a href="#5、授权管理" class="headerlink" title="5、授权管理"></a>5、授权管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">show grants for &apos;用户&apos;@&apos;IP地址&apos;                  -- 查看权限</div><div class="line">grant  权限 on 数据库.表 to   &apos;用户&apos;@&apos;IP地址&apos;      -- 授权</div><div class="line">revoke 权限 on 数据库.表 from &apos;用户&apos;@&apos;IP地址&apos;      -- 取消权限</div></pre></td></tr></table></figure>
+<p> 对于权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">all privileges  除grant外的所有权限</div><div class="line">            select          仅查权限</div><div class="line">            select,insert   查和插入权限</div><div class="line">            ...</div><div class="line">            usage                   无访问权限</div><div class="line">            alter                   使用alter table</div><div class="line">            alter routine           使用alter procedure和drop procedure</div><div class="line">            create                  使用create table</div><div class="line">            create routine          使用create procedure</div><div class="line">            create temporary tables 使用create temporary tables</div><div class="line">            create user             使用create user、drop user、rename user和revoke  all privileges</div><div class="line">            create view             使用create view</div><div class="line">            delete                  使用delete</div><div class="line">            drop                    使用drop table</div><div class="line">            execute                 使用call和存储过程</div><div class="line">            file                    使用select into outfile 和 load data infile</div><div class="line">            grant option            使用grant 和 revoke</div><div class="line">            index                   使用index</div><div class="line">            insert                  使用insert</div><div class="line">            lock tables             使用lock table</div><div class="line">            process                 使用show full processlist</div><div class="line">            select                  使用select</div><div class="line">            show databases          使用show databases</div><div class="line">            show view               使用show view</div><div class="line">            update                  使用update</div><div class="line">            reload                  使用flush</div><div class="line">            shutdown                使用mysqladmin shutdown(关闭MySQL)</div><div class="line">            super                   􏱂􏰈使用change master、kill、logs、purge、master和set global。还允许mysqladmin􏵗􏵘􏲊􏲋调试登陆</div><div class="line">            replication client      服务器位置的访问</div><div class="line">            replication slave       由复制从属使用</div></pre></td></tr></table></figure>
+<p> 对于数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">对于目标数据库以及内部其他：</div><div class="line">           数据库名.*           数据库中的所有</div><div class="line">           数据库名.表          指定数据库中的某张表</div><div class="line">           数据库名.存储过程     指定数据库中的存储过程</div><div class="line">           *.*                所有数据库</div></pre></td></tr></table></figure>
+<p> 对于用户和IP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">用户名@IP地址         用户只能在改IP下才能访问</div><div class="line">用户名@192.168.1.%   用户只能在改IP段下才能访问(通配符%表示任意)</div><div class="line">用户名@%             用户可以再任意IP下访问(默认IP地址为%)</div></pre></td></tr></table></figure>
+<p> 示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grant all privileges on db1.tb1 TO &apos;用户名&apos;@&apos;IP&apos;</div><div class="line">grant select on db1.* TO &apos;用户名&apos;@&apos;IP&apos;</div><div class="line">grant select,insert on *.* TO &apos;用户名&apos;@&apos;IP&apos;</div><div class="line">revoke select on db1.tb1 from &apos;用户名&apos;@&apos;IP&apos;</div></pre></td></tr></table></figure>
+<p>特殊的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush privileges，将数据读取到内存中，从而立即生效。</div></pre></td></tr></table></figure>
+<p>忘记密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 启动免授权服务端</div><div class="line">mysqld --skip-grant-tables</div><div class="line"></div><div class="line"># 客户端</div><div class="line">mysql -u root -p</div><div class="line"></div><div class="line"># 修改用户名密码</div><div class="line">update mysql.user set authentication_string=password(&apos;666&apos;) where user=&apos;root&apos;;</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+<h3 id="四、数据表操作"><a href="#四、数据表操作" class="headerlink" title="四、数据表操作"></a>四、数据表操作</h3><h4 id="1、创建表"><a href="#1、创建表" class="headerlink" title="1、创建表"></a>1、创建表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">create table 表名(</div><div class="line">    列名  类型  是否可以为空，</div><div class="line">    列名  类型  是否可以为空</div><div class="line">)ENGINE=InnoDB DEFAULT CHARSET=utf8</div></pre></td></tr></table></figure>
+<p> 是否可以为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">null表示空，非字符串</div><div class="line">not null    - 不可空</div><div class="line">null        - 可空</div></pre></td></tr></table></figure>
+<p> 默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值</div><div class="line">create table tb1(</div><div class="line">	nid int not null defalut 2,</div><div class="line">	num int not null</div><div class="line">)</div></pre></td></tr></table></figure>
+<p> 自增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"># 自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）</div><div class="line">            create table tb1(</div><div class="line">                nid int not null auto_increment primary key,</div><div class="line">                num int null</div><div class="line">            )</div><div class="line">            或</div><div class="line">            create table tb1(</div><div class="line">                nid int not null auto_increment,</div><div class="line">                num int null,</div><div class="line">                index(nid)</div><div class="line">            )</div><div class="line"># 注意：1、对于自增列，必须是索引（含主键）。</div><div class="line">     # 2、对于自增可以设置步长和起始值</div><div class="line">             show session variables like &apos;auto_inc%&apos;;</div><div class="line">             set session auto_increment_increment=2;</div><div class="line">             set session auto_increment_offset=10;</div><div class="line"></div><div class="line">             shwo global  variables like &apos;auto_inc%&apos;;</div><div class="line">             set global auto_increment_increment=2;</div><div class="line">             set global auto_increment_offset=10;</div></pre></td></tr></table></figure>
+<p> 主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。</div><div class="line">            create table tb1(</div><div class="line">                nid int not null auto_increment primary key,</div><div class="line">                num int null</div><div class="line">            )</div><div class="line">            #或</div><div class="line">            create table tb1(</div><div class="line">                nid int not null,</div><div class="line">                num int not null,</div><div class="line">                primary key(nid,num)</div><div class="line">            )</div></pre></td></tr></table></figure>
+<p> 外键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#外键，一个特殊的索引，只能是指定内容</div><div class="line">           creat table color(</div><div class="line">               nid int not null primary key,</div><div class="line">               name char(16) not null</div><div class="line">           )</div><div class="line"></div><div class="line">           create table fruit(</div><div class="line">               nid int not null primary key,</div><div class="line">               smt char(32) null ,</div><div class="line">               color_id int not null,</div><div class="line">               constraint fk_cc foreign key (color_id) references color(nid)</div><div class="line">           )</div></pre></td></tr></table></figure>
+<h4 id="2、删除表"><a href="#2、删除表" class="headerlink" title="2、删除表"></a>2、删除表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop table 表名</div></pre></td></tr></table></figure>
+<h4 id="3、清空表"><a href="#3、清空表" class="headerlink" title="3、清空表"></a>3、清空表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">delete from 表名</div><div class="line">truncate table 表名</div></pre></td></tr></table></figure>
+<h4 id="4、修改表"><a href="#4、修改表" class="headerlink" title="4、修改表"></a>4、修改表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#添加列：</div><div class="line">        alter table 表名 add 列名 类型</div><div class="line">#删除列：</div><div class="line">        alter table 表名 drop column 列名</div><div class="line">#修改列：</div><div class="line">        alter table 表名 modify column 列名 类型;  -- 类型</div><div class="line">        alter table 表名 change 原列名 新列名 类型; -- 列名，类型</div><div class="line"> </div><div class="line">#添加主键：</div><div class="line">        alter table 表名 add primary key(列名);</div><div class="line">#删除主键：</div><div class="line">        alter table 表名 drop primary key;</div><div class="line">        alter table 表名  modify  列名 int, drop primary key;</div><div class="line"> </div><div class="line">#添加外键：</div><div class="line">        alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);</div><div class="line">#删除外键：</div><div class="line">        alter table 表名 drop foreign key 外键名称</div><div class="line"> </div><div class="line">#修改默认值：</div><div class="line">        ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</div><div class="line">#删除默认值：</div><div class="line">        ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</div></pre></td></tr></table></figure>
+<h4 id="5、基本数据类型"><a href="#5、基本数据类型" class="headerlink" title="5、基本数据类型"></a>5、基本数据类型</h4><p>MySQL的数据类型大致分为：数值、时间和字符串</p>
+<p><a href="http://www.runoob.com/mysql/mysql-data-types.html" target="_blank" rel="external">http://www.runoob.com/mysql/mysql-data-types.html</a></p>
+<h3 id="五、表内容基本操作"><a href="#五、表内容基本操作" class="headerlink" title="五、表内容基本操作"></a>五、表内容基本操作</h3><p>1、增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">insert into 表 (列名,列名...) values (值,值,值...)</div><div class="line">insert into 表 (列名,列名...) values (值,值,值...),(值,值,值...)</div><div class="line">insert into 表 (列名,列名...) select (列名,列名...) from 表</div></pre></td></tr></table></figure>
+<p>2、删</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">delete from 表</div><div class="line">delete from 表 where id＝1 and name＝&apos;alex&apos;</div></pre></td></tr></table></figure>
+<p>3、改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update 表 set name ＝ &apos;alex&apos; where id&gt;1</div></pre></td></tr></table></figure>
+<p>4、查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">select * from 表</div><div class="line">select * from 表 where id &gt; 1</div><div class="line">select nid,name,gender as gg from 表 where id &gt; 1</div></pre></td></tr></table></figure>
+<p>5、其它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">a、条件</div><div class="line">    select * from 表 where id &gt; 1 and name != &apos;alex&apos; and num = 12;</div><div class="line"> </div><div class="line">    select * from 表 where id between 5 and 16;</div><div class="line"> </div><div class="line">    select * from 表 where id in (11,22,33)</div><div class="line">    select * from 表 where id not in (11,22,33)</div><div class="line">    select * from 表 where id in (select nid from 表)</div><div class="line"> </div><div class="line">b、通配符</div><div class="line">    select * from 表 where name like &apos;ale%&apos;  - ale开头的所有（多个字符串）</div><div class="line">    select * from 表 where name like &apos;ale_&apos;  - ale开头的所有（一个字符）</div><div class="line"> </div><div class="line">c、限制</div><div class="line">    select * from 表 limit 5;            - 前5行</div><div class="line">    select * from 表 limit 4,5;          - 从第4行开始的5行</div><div class="line">    select * from 表 limit 5 offset 4    - 从第4行开始的5行</div><div class="line"> </div><div class="line">d、排序</div><div class="line">    select * from 表 order by 列 asc              - 根据 “列” 从小到大排列</div><div class="line">    select * from 表 order by 列 desc             - 根据 “列” 从大到小排列</div><div class="line">    select * from 表 order by 列1 desc,列2 asc    - 根据 “列1” 从大到小排列，如果相同则按列2从小到大排序</div><div class="line"> </div><div class="line">e、分组</div><div class="line">    select num from 表 group by num</div><div class="line">    select num,nid from 表 group by num,nid</div><div class="line">    select num,nid from 表  where nid &gt; 10 group by num,nid order nid desc</div><div class="line">    select num,nid,count(*),sum(score),max(score),min(score) from 表 group by num,nid</div><div class="line"> </div><div class="line">    select num from 表 group by num having max(id) &gt; 10</div><div class="line"> </div><div class="line">    特别的：group by 必须在where之后，order by之前</div><div class="line"> </div><div class="line">f、连表</div><div class="line">    无对应关系则不显示</div><div class="line">    select A.num, A.name, B.name</div><div class="line">    from A,B</div><div class="line">    Where A.nid = B.nid</div><div class="line"> </div><div class="line">    无对应关系则不显示</div><div class="line">    select A.num, A.name, B.name</div><div class="line">    from A inner join B</div><div class="line">    on A.nid = B.nid</div><div class="line"> </div><div class="line">    A表所有显示，如果B中无对应关系，则值为null</div><div class="line">    select A.num, A.name, B.name</div><div class="line">    from A left join B</div><div class="line">    on A.nid = B.nid</div><div class="line"> </div><div class="line">    B表所有显示，如果B中无对应关系，则值为null</div><div class="line">    select A.num, A.name, B.name</div><div class="line">    from A right join B</div><div class="line">    on A.nid = B.nid</div><div class="line"> </div><div class="line">g、组合</div><div class="line">    组合，自动处理重合</div><div class="line">    select nickname</div><div class="line">    from A</div><div class="line">    union</div><div class="line">    select name</div><div class="line">    from B</div><div class="line"> </div><div class="line">    组合，不处理重合</div><div class="line">    select nickname</div><div class="line">    from A</div><div class="line">    union all</div><div class="line">    select name</div><div class="line">    from B</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/webchat-reward.jpg" alt="Yaro WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/alipay-reward.jpg" alt="Yaro Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/15/第9篇-Web框架-Tornado/" rel="next" title="第9篇-Web框架-Tornado">
+                <i class="fa fa-chevron-left"></i> 第9篇-Web框架-Tornado
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/15/第10篇-MySQL-进阶/" rel="prev" title="第10篇-MySQL-进阶">
+                第10篇-MySQL-进阶 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/15/第10篇-MySQL-入门/"
+           data-title="第10篇-MySQL-入门" data-url="http://yoursite.com/2017/07/15/第10篇-MySQL-入门/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png"
+               alt="Yaro" />
+          <p class="site-author-name" itemprop="name">Yaro</p>
+          <p class="site-description motion-element" itemprop="description">生活=不断尝试,不断犯错</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaro97" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wyzh97" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mryaro" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是数据库-？"><span class="nav-number">1.1.</span> <span class="nav-text">1、什么是数据库 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、什么是-MySQL、Oracle、SQLite、Access、MS-SQL-Server等-？"><span class="nav-number">1.2.</span> <span class="nav-text">2、什么是 MySQL、Oracle、SQLite、Access、MS SQL Server等 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、什么是SQL-？"><span class="nav-number">1.3.</span> <span class="nav-text">3、什么是SQL ？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、下载安装"><span class="nav-number">2.</span> <span class="nav-text">二、下载安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Window版本"><span class="nav-number">2.1.</span> <span class="nav-text">Window版本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、下载"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、解压"><span class="nav-number">2.1.2.</span> <span class="nav-text">2、解压</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、初始化"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、启动MySQL服务"><span class="nav-number">2.1.4.</span> <span class="nav-text">4、启动MySQL服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、启动MySQL客户端并连接MySQL服务"><span class="nav-number">2.1.5.</span> <span class="nav-text">5、启动MySQL客户端并连接MySQL服务</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux版本"><span class="nav-number">2.2.</span> <span class="nav-text">Linux版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、数据库操作"><span class="nav-number">3.</span> <span class="nav-text">三、数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、显示数据库"><span class="nav-number">3.1.</span> <span class="nav-text">1、显示数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建数据库"><span class="nav-number">3.2.</span> <span class="nav-text">2、创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、使用数据库"><span class="nav-number">3.3.</span> <span class="nav-text">3、使用数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、用户管理"><span class="nav-number">3.4.</span> <span class="nav-text">4、用户管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、授权管理"><span class="nav-number">3.5.</span> <span class="nav-text">5、授权管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、数据表操作"><span class="nav-number">4.</span> <span class="nav-text">四、数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、创建表"><span class="nav-number">4.1.</span> <span class="nav-text">1、创建表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、删除表"><span class="nav-number">4.2.</span> <span class="nav-text">2、删除表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、清空表"><span class="nav-number">4.3.</span> <span class="nav-text">3、清空表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、修改表"><span class="nav-number">4.4.</span> <span class="nav-text">4、修改表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、基本数据类型"><span class="nav-number">4.5.</span> <span class="nav-text">5、基本数据类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、表内容基本操作"><span class="nav-number">5.</span> <span class="nav-text">五、表内容基本操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yaro</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yaro97githubio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

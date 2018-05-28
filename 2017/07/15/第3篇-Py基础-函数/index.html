@@ -1,0 +1,828 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="三元运算三元运算（三目运算），是对简单的条件语句的缩写。
+123# 书写格式 result = 值1 if 条件 else 值2 # 如果条件成立，那么将 “值1” 赋值给result变量，否则，将“值2”赋值给result变量
+基本数据类型补充set集合set集合，是一个无序且不重复的元素集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第3篇-Py基础-函数">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/第3篇-Py基础-函数/index.html">
+<meta property="og:site_name" content="Yaro's Notes">
+<meta property="og:description" content="三元运算三元运算（三目运算），是对简单的条件语句的缩写。
+123# 书写格式 result = 值1 if 条件 else 值2 # 如果条件成立，那么将 “值1” 赋值给result变量，否则，将“值2”赋值给result变量
+基本数据类型补充set集合set集合，是一个无序且不重复的元素集合">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/07/13/5966cfe6849e1.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/07/13/5966d03f7924a.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/07/13/5966d07a02139.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/07/13/5966d0de42aea.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/07/13/5966d35215d7c.png">
+<meta property="og:updated_time" content="2017-07-15T15:35:16.318Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第3篇-Py基础-函数">
+<meta name="twitter:description" content="三元运算三元运算（三目运算），是对简单的条件语句的缩写。
+123# 书写格式 result = 值1 if 条件 else 值2 # 如果条件成立，那么将 “值1” 赋值给result变量，否则，将“值2”赋值给result变量
+基本数据类型补充set集合set集合，是一个无序且不重复的元素集合">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/07/13/5966cfe6849e1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/第3篇-Py基础-函数/"/>
+
+
+
+
+
+  <title> 第3篇-Py基础-函数 | Yaro's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yaro's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录/备忘/练手</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/第3篇-Py基础-函数/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yaro">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yaro's Notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yaro's Notes" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                第3篇-Py基础-函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-15T15:06:47+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/07/15/第3篇-Py基础-函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/15/第3篇-Py基础-函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h3><p>三元运算（三目运算），是对简单的条件语句的缩写。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 书写格式</span></div><div class="line"> result = 值<span class="number">1</span> <span class="keyword">if</span> 条件 <span class="keyword">else</span> 值<span class="number">2</span></div><div class="line"> <span class="comment"># 如果条件成立，那么将 “值1” 赋值给result变量，否则，将“值2”赋值给result变量</span></div></pre></td></tr></table></figure>
+<h3 id="基本数据类型补充"><a href="#基本数据类型补充" class="headerlink" title="基本数据类型补充"></a>基本数据类型补充</h3><h4 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h4><p>set集合，是一个无序且不重复的元素集合</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">set</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    set() -&gt; new empty set object</div><div class="line">    set(iterable) -&gt; new set object</div><div class="line">     </div><div class="line">    Build an unordered collection of unique elements.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Add an element to a set，添加元素</div><div class="line">         </div><div class="line">        This has no effect if the element is already present.</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Remove all elements from this set. 清除内容"""</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">copy</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Return a shallow copy of a set. 浅拷贝  """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">difference</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Return the difference of two or more sets as a new set. A中存在，B中不存在</div><div class="line">         </div><div class="line">        (i.e. all elements that are in this set but not the others.)</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">difference_update</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Remove all elements of another set from this set.  从当前集合中删除和B中相同的元素"""</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">discard</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Remove an element from a set if it is a member.</div><div class="line">         </div><div class="line">        If the element is not a member, do nothing. 移除指定元素，不存在不保错</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intersection</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Return the intersection of two sets as a new set. 交集</div><div class="line">         </div><div class="line">        (i.e. all elements that are in both sets.)</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intersection_update</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Update a set with the intersection of itself and another.  取交集并更更新到A中 """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isdisjoint</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Return True if two sets have a null intersection.  如果没有交集，返回True，否则返回False"""</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">issubset</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Report whether another set contains this set.  是否是子序列"""</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">issuperset</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Report whether this set contains another set. 是否是父序列"""</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Remove and return an arbitrary set element.</div><div class="line">        Raises KeyError if the set is empty. 移除元素</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Remove an element from a set; it must be a member.</div><div class="line">         </div><div class="line">        If the element is not a member, raise a KeyError. 移除指定元素，不存在保错</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">symmetric_difference</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Return the symmetric difference of two sets as a new set.  对称差集</div><div class="line">         </div><div class="line">        (i.e. all elements that are in exactly one of the sets.)</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">symmetric_difference_update</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Update a set with the symmetric difference of itself and another. 对称差集，并更新到a中 """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        Return the union of sets as a new set.  并集</div><div class="line">         </div><div class="line">        (i.e. all elements that are in either set.)</div><div class="line">        """</div><div class="line">        <span class="keyword">pass</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Update a set with the union of itself and others. 更新 """</span></div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p><strong>练习：寻找差异</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 数据库中原有</span></div><div class="line">old_dict = &#123;</div><div class="line">    <span class="string">"#1"</span>:&#123; <span class="string">'hostname'</span>:c1, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">80</span> &#125;,</div><div class="line">    <span class="string">"#2"</span>:&#123; <span class="string">'hostname'</span>:c1, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">80</span> &#125;</div><div class="line">    <span class="string">"#3"</span>:&#123; <span class="string">'hostname'</span>:c1, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">80</span> &#125;</div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="comment"># cmdb 新汇报的数据</span></div><div class="line">new_dict = &#123;</div><div class="line">    <span class="string">"#1"</span>:&#123; <span class="string">'hostname'</span>:c1, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">800</span> &#125;,</div><div class="line">    <span class="string">"#3"</span>:&#123; <span class="string">'hostname'</span>:c1, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">80</span> &#125;</div><div class="line">    <span class="string">"#4"</span>:&#123; <span class="string">'hostname'</span>:c2, <span class="string">'cpu_count'</span>: <span class="number">2</span>, <span class="string">'mem_capicity'</span>: <span class="number">80</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要删除：？<br>需要新建：？<br>需要更新：？<br>注意：无需考虑内部元素是否改变，只要原来存在，新汇报也存在，就是需要更新</p>
+<h3 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h3><h4 id="一、数字和字符串"><a href="#一、数字和字符串" class="headerlink" title="一、数字和字符串"></a>一、数字和字符串</h4><p>对于 数字 和 字符串 而言，赋值、浅拷贝和深拷贝无意义，因为其永远指向同一个内存地址。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line"><span class="comment"># ######### 数字、字符串 #########</span></div><div class="line">n1 = <span class="number">123</span></div><div class="line"><span class="comment"># n1 = "i am alex age 10"</span></div><div class="line">print(id(n1))</div><div class="line"><span class="comment"># ## 赋值 ##</span></div><div class="line">n2 = n1</div><div class="line">print(id(n2))</div><div class="line"><span class="comment"># ## 浅拷贝 ##</span></div><div class="line">n2 = copy.copy(n1)</div><div class="line">print(id(n2))</div><div class="line">  </div><div class="line"><span class="comment"># ## 深拷贝 ##</span></div><div class="line">n3 = copy.deepcopy(n1)</div><div class="line">print(id(n3))</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/07/13/5966cfe6849e1.png" width="400px"></p>
+<h4 id="二、其他基本数据类型"><a href="#二、其他基本数据类型" class="headerlink" title="二、其他基本数据类型"></a>二、其他基本数据类型</h4><p>对于字典、元祖、列表 而言，进行赋值、浅拷贝和深拷贝时，其内存地址的变化是不同的。</p>
+<h5 id="1、赋值"><a href="#1、赋值" class="headerlink" title="1、赋值"></a>1、赋值</h5><p><strong>赋值</strong>，只是创建一个变量，该变量指向原来内存地址，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">n1 = &#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line">n2 = n1</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/07/13/5966d03f7924a.png" width="400px"></p>
+<h5 id="2、浅拷贝"><a href="#2、浅拷贝" class="headerlink" title="2、浅拷贝"></a>2、浅拷贝</h5><p><strong>浅拷贝</strong>，在内存中只额外创建第一层数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">n1 = &#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line">n3 = copy.copy(n1)</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/07/13/5966d07a02139.png" width="400px"></p>
+<h5 id="3、深拷贝"><a href="#3、深拷贝" class="headerlink" title="3、深拷贝"></a>3、深拷贝</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">n1 = &#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line">n4 = copy.deepcopy(n1)</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/07/13/5966d0de42aea.png" width="400px"></p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h4><p>在学习函数之前，一直遵循：面向过程编程，即：根据业务逻辑从上到下实现功能，其往往用一长段代码来实现指定功能，开发过程中最常见的操作就是粘贴复制，也就是将之前实现的代码块复制到现需功能处，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>：</div><div class="line">    <span class="keyword">if</span> cpu利用率 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> 硬盘使用空间 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> 内存占用 &gt; <span class="number">80</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div></pre></td></tr></table></figure>
+<p>定眼一看上述代码，if条件语句下的内容可以被提取出来公用，如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">def 发送邮件(内容)</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line">    </div><div class="line">while True：</div><div class="line">    </div><div class="line">    if cpu利用率 &gt; 90%:</div><div class="line">        发送邮件('CPU报警')</div><div class="line">    </div><div class="line">    if 硬盘使用空间 &gt; 90%:</div><div class="line">        发送邮件('硬盘报警')</div><div class="line">    </div><div class="line">    if 内存占用 &gt; 80%:</div><div class="line">    	发送邮件（‘内存报警’）</div></pre></td></tr></table></figure>
+<p>对于上述的两种实现方式，第二次必然比第一次的重用性和可读性要好，其实这就是函数式编程和面向过程编程的区别：</p>
+<ul>
+<li>函数式：将某功能代码封装到函数中，日后便无需重复编写，仅调用函数即可</li>
+<li>面向对象：对函数进行分类和封装，让开发“更快更好更强…”</li>
+</ul>
+<p><strong>函数式编程最重要的是增强代码的重用性和可读性</strong></p>
+<h4 id="二、定义和使用"><a href="#二、定义和使用" class="headerlink" title="二、定义和使用"></a>二、定义和使用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">(参数)</span>:</span></div><div class="line">       </div><div class="line">    ...</div><div class="line">    函数体</div><div class="line">    ...</div><div class="line">    返回值</div></pre></td></tr></table></figure>
+<p>函数的定义主要有如下要点：</p>
+<ul>
+<li>def：表示函数的关键字</li>
+<li>函数名：函数的名称，日后根据函数名调用函数</li>
+<li>函数体：函数中进行一系列的逻辑计算，如：发送邮件、计算出 [11,22,38,888,2]中的最大数等…</li>
+<li>参数：为函数体提供数据</li>
+<li>返回值：当函数执行完毕后，可以给调用者返回数据，不设置返回值，默认为<code>None</code>。</li>
+</ul>
+<h5 id="1、返回值"><a href="#1、返回值" class="headerlink" title="1、返回值"></a>1、返回值</h5><p>函数是一个功能块，该功能到底执行成功与否，需要通过返回值来告知调用者。</p>
+<p>以上要点中，比较重要有参数和返回值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> 发送短信<span class="params">()</span>:</span></div><div class="line">       </div><div class="line">    发送短信的代码...</div><div class="line">   </div><div class="line">    <span class="keyword">if</span> 发送成功:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">   </div><div class="line">   </div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">       </div><div class="line">    <span class="comment"># 每次执行发送短信函数，都会将返回值自动赋值给result</span></div><div class="line">    <span class="comment"># 之后，可以根据result来写日志，或重发等操作</span></div><div class="line">   </div><div class="line">    result = 发送短信()</div><div class="line">    <span class="keyword">if</span> result == <span class="keyword">False</span>:</div><div class="line">        记录日志，短信发送失败...</div></pre></td></tr></table></figure>
+<h5 id="2、参数"><a href="#2、参数" class="headerlink" title="2、参数"></a>2、参数</h5><p>为什么要有参数？</p>
+<p><strong>无参数实现</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">def CPU报警邮件()</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line"></div><div class="line">def 硬盘报警邮件()</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line"></div><div class="line">def 内存报警邮件()</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line"> </div><div class="line">while True：</div><div class="line"> </div><div class="line">    if cpu利用率 &gt; 90%:</div><div class="line">        CPU报警邮件（）</div><div class="line"> </div><div class="line">    if 硬盘使用空间 &gt; 90%:</div><div class="line">        硬盘报警邮件（）</div><div class="line"> </div><div class="line">    if 内存占用 &gt; 80%:</div><div class="line">        内存报警邮件（）</div><div class="line"></div><div class="line">无参数实现</div></pre></td></tr></table></figure>
+<p><strong>有参数实现</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">def 发送邮件(邮件内容)</div><div class="line"></div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line"></div><div class="line"> </div><div class="line">while True：</div><div class="line"> </div><div class="line">    if cpu利用率 &gt; 90%:</div><div class="line">        发送邮件("CPU报警了。")</div><div class="line"> </div><div class="line">    if 硬盘使用空间 &gt; 90%:</div><div class="line">        发送邮件("硬盘报警了。")</div><div class="line"> </div><div class="line">    if 内存占用 &gt; 80%:</div><div class="line">        发送邮件("内存报警了。")</div><div class="line"></div><div class="line">有参数实现</div></pre></td></tr></table></figure>
+<p>函数的有三中不同的参数：</p>
+<ul>
+<li>普通参数</li>
+<li>默认参数</li>
+<li>动态参数</li>
+</ul>
+<h6 id="普通参数："><a href="#普通参数：" class="headerlink" title="普通参数："></a>普通参数：</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ######### 定义函数 ######### </span></div><div class="line"></div><div class="line"><span class="comment"># name 叫做函数func的形式参数，简称：形参</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">print</span> name</div><div class="line"></div><div class="line"><span class="comment"># ######### 执行函数 ######### </span></div><div class="line"><span class="comment">#  'wupeiqi' 叫做函数func的实际参数，简称：实参</span></div><div class="line">func(<span class="string">'wupeiqi'</span>)</div><div class="line"></div><div class="line">普通参数</div></pre></td></tr></table></figure>
+<h6 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(name, age = <span class="number">18</span>)</span>:</span></div><div class="line">    </div><div class="line">    <span class="keyword">print</span> <span class="string">"%s:%s"</span> %(name,age)</div><div class="line"></div><div class="line"><span class="comment"># 指定参数</span></div><div class="line">func(<span class="string">'wupeiqi'</span>, <span class="number">19</span>)</div><div class="line"><span class="comment"># 使用默认参数</span></div><div class="line">func(<span class="string">'alex'</span>)</div><div class="line"></div><div class="line">注：默认参数需要放在参数列表最后</div><div class="line"></div><div class="line">默认参数</div></pre></td></tr></table></figure>
+<h6 id="动态参数"><a href="#动态参数" class="headerlink" title="动态参数"></a>动态参数</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">print</span> args</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 执行方式一</span></div><div class="line">func(<span class="number">11</span>,<span class="number">33</span>,<span class="number">4</span>,<span class="number">4454</span>,<span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment"># 执行方式二</span></div><div class="line">li = [<span class="number">11</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">54</span>]</div><div class="line">func(*li)</div><div class="line"></div><div class="line">动态参数</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**kwargs)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">print</span> args</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 执行方式一</span></div><div class="line">func(name＝<span class="string">'wupeiqi'</span>,age=<span class="number">18</span>)</div><div class="line"></div><div class="line"><span class="comment"># 执行方式二</span></div><div class="line">li = &#123;<span class="string">'name'</span>:<span class="string">'wupeiqi'</span>, age:<span class="number">18</span>, <span class="string">'gender'</span>:<span class="string">'male'</span>&#125;</div><div class="line">func(**li)</div><div class="line"></div><div class="line">动态参数</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args, **kwargs)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">print</span> args</div><div class="line">    <span class="keyword">print</span> kwargs</div></pre></td></tr></table></figure>
+<h6 id="扩展：发送邮件实例"><a href="#扩展：发送邮件实例" class="headerlink" title="扩展：发送邮件实例"></a>扩展：发送邮件实例</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</div><div class="line"><span class="keyword">from</span> email.utils <span class="keyword">import</span> formataddr</div><div class="line">  </div><div class="line">  </div><div class="line">msg = MIMEText(<span class="string">'邮件内容'</span>, <span class="string">'plain'</span>, <span class="string">'utf-8'</span>)</div><div class="line">msg[<span class="string">'From'</span>] = formataddr([<span class="string">"武沛齐"</span>,<span class="string">'wptawy@126.com'</span>])</div><div class="line">msg[<span class="string">'To'</span>] = formataddr([<span class="string">"走人"</span>,<span class="string">'424662508@qq.com'</span>])</div><div class="line">msg[<span class="string">'Subject'</span>] = <span class="string">"主题"</span></div><div class="line">  </div><div class="line">server = smtplib.SMTP(<span class="string">"smtp.126.com"</span>, <span class="number">25</span>)</div><div class="line">server.login(<span class="string">"wptawy@126.com"</span>, <span class="string">"邮箱密码"</span>)</div><div class="line">server.sendmail(<span class="string">'wptawy@126.com'</span>, [<span class="string">'424662508@qq.com'</span>,], msg.as_string())</div><div class="line">server.quit()</div><div class="line"></div><div class="line">发送邮件实例</div></pre></td></tr></table></figure>
+<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><p><img src="https://ooo.0o0.ooo/2017/07/13/5966d35215d7c.png" width="800px"></p>
+<p>注：查看更多详细<a href="https://docs.python.org/3/library/functions.html#next" target="_blank" rel="external">猛击这里</a></p>
+<h3 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a>open函数</h3><p>该函数用于文件处理，操作文件时，一般需要经历如下步骤：</p>
+<ul>
+<li>打开文件</li>
+<li>操作文件</li>
+</ul>
+<h4 id="一、打开文件"><a href="#一、打开文件" class="headerlink" title="一、打开文件"></a>一、打开文件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文件句柄 = open(<span class="string">'文件路径'</span>, <span class="string">'模式'</span>)</div></pre></td></tr></table></figure>
+<p>打开文件时，需要指定文件路径和以何等方式打开文件，打开后，即可获取该文件句柄，日后通过此文件句柄对该文件操作。</p>
+<p>打开文件的模式有：</p>
+<ul>
+<li>r ，只读模式【默认】</li>
+<li>w，只写模式【不可读；不存在则创建；存在则清空内容；】</li>
+<li>x， 只写模式【不可读；不存在则创建，存在则报错】</li>
+<li>a， 追加模式【可读；   不存在则创建；存在则只追加内容；】</li>
+</ul>
+<p>“+” 表示可以同时读写某个文件</p>
+<ul>
+<li>r+， 读写【可读，可写】</li>
+<li>w+，写读【可读，可写】</li>
+<li>x+ ，写读【可读，可写】</li>
+<li>a+， 写读【可读，可写】</li>
+</ul>
+<p>“b”表示以字节的方式操作</p>
+<ul>
+<li>rb  或 r+b</li>
+<li>wb 或 w+b</li>
+<li>xb 或 w+b</li>
+<li><p>ab 或 a+b</p>
+<p>注：以b方式打开时，读取到的内容是字节类型，写入时也需要提供字节类型</p>
+</li>
+</ul>
+<h4 id="二、操作"><a href="#二、操作" class="headerlink" title="二、操作"></a>二、操作</h4><h5 id="2-x版本"><a href="#2-x版本" class="headerlink" title="2.x版本"></a>2.x版本</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div></pre></td><td class="code"><pre><div class="line">class file(object)</div><div class="line">    def close(self): # real signature unknown; restored from __doc__</div><div class="line">        关闭文件</div><div class="line">        """</div><div class="line">        close() -&gt; None or (perhaps) an integer.  Close the file.</div><div class="line">         </div><div class="line">        Sets data attribute .closed to True.  A closed file cannot be used for</div><div class="line">        further I/O operations.  close() may be called more than once without</div><div class="line">        error.  Some kinds of file objects (for example, opened by popen())</div><div class="line">        may return an exit status upon closing.</div><div class="line">        """</div><div class="line"> </div><div class="line">    def fileno(self): # real signature unknown; restored from __doc__</div><div class="line">        文件描述符  </div><div class="line">         """</div><div class="line">        fileno() -&gt; integer "file descriptor".</div><div class="line">         </div><div class="line">        This is needed for lower-level file interfaces, such os.read().</div><div class="line">        """</div><div class="line">        return 0    </div><div class="line"> </div><div class="line">    def flush(self): # real signature unknown; restored from __doc__</div><div class="line">        刷新文件内部缓冲区</div><div class="line">        """ flush() -&gt; None.  Flush the internal I/O buffer. """</div><div class="line">        pass</div><div class="line"> </div><div class="line"> </div><div class="line">    def isatty(self): # real signature unknown; restored from __doc__</div><div class="line">        判断文件是否是同意tty设备</div><div class="line">        """ isatty() -&gt; true or false.  True if the file is connected to a tty device. """</div><div class="line">        return False</div><div class="line"> </div><div class="line"> </div><div class="line">    def next(self): # real signature unknown; restored from __doc__</div><div class="line">        获取下一行数据，不存在，则报错</div><div class="line">        """ x.next() -&gt; the next value, or raise StopIteration """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def read(self, size=None): # real signature unknown; restored from __doc__</div><div class="line">        读取指定字节数据</div><div class="line">        """</div><div class="line">        read([size]) -&gt; read at most size bytes, returned as a string.</div><div class="line">         </div><div class="line">        If the size argument is negative or omitted, read until EOF is reached.</div><div class="line">        Notice that when in non-blocking mode, less data than what was requested</div><div class="line">        may be returned, even if no size parameter was given.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def readinto(self): # real signature unknown; restored from __doc__</div><div class="line">        读取到缓冲区，不要用，将被遗弃</div><div class="line">        """ readinto() -&gt; Undocumented.  Don't use this; it may go away. """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def readline(self, size=None): # real signature unknown; restored from __doc__</div><div class="line">        仅读取一行数据</div><div class="line">        """</div><div class="line">        readline([size]) -&gt; next line from the file, as a string.</div><div class="line">         </div><div class="line">        Retain newline.  A non-negative size argument limits the maximum</div><div class="line">        number of bytes to return (an incomplete line may be returned then).</div><div class="line">        Return an empty string at EOF.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def readlines(self, size=None): # real signature unknown; restored from __doc__</div><div class="line">        读取所有数据，并根据换行保存值列表</div><div class="line">        """</div><div class="line">        readlines([size]) -&gt; list of strings, each a line from the file.</div><div class="line">         </div><div class="line">        Call readline() repeatedly and return a list of the lines so read.</div><div class="line">        The optional size argument, if given, is an approximate bound on the</div><div class="line">        total number of bytes in the lines returned.</div><div class="line">        """</div><div class="line">        return []</div><div class="line"> </div><div class="line">    def seek(self, offset, whence=None): # real signature unknown; restored from __doc__</div><div class="line">        指定文件中指针位置</div><div class="line">        """</div><div class="line">        seek(offset[, whence]) -&gt; None.  Move to new file position.</div><div class="line">         </div><div class="line">        Argument offset is a byte count.  Optional argument whence defaults to</div><div class="line">(offset from start of file, offset should be &gt;= 0); other values are 1</div><div class="line">        (move relative to current position, positive or negative), and 2 (move</div><div class="line">        relative to end of file, usually negative, although many platforms allow</div><div class="line">        seeking beyond the end of a file).  If the file is opened in text mode,</div><div class="line">        only offsets returned by tell() are legal.  Use of other offsets causes</div><div class="line">        undefined behavior.</div><div class="line">        Note that not all file objects are seekable.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def tell(self): # real signature unknown; restored from __doc__</div><div class="line">        获取当前指针位置</div><div class="line">        """ tell() -&gt; current file position, an integer (may be a long integer). """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def truncate(self, size=None): # real signature unknown; restored from __doc__</div><div class="line">        截断数据，仅保留指定之前数据</div><div class="line">        """</div><div class="line">        truncate([size]) -&gt; None.  Truncate the file to at most size bytes.</div><div class="line">         </div><div class="line">        Size defaults to the current file position, as returned by tell().</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def write(self, p_str): # real signature unknown; restored from __doc__</div><div class="line">        写内容</div><div class="line">        """</div><div class="line">        write(str) -&gt; None.  Write string str to file.</div><div class="line">         </div><div class="line">        Note that due to buffering, flush() or close() may be needed before</div><div class="line">        the file on disk reflects the data written.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def writelines(self, sequence_of_strings): # real signature unknown; restored from __doc__</div><div class="line">        将一个字符串列表写入文件</div><div class="line">        """</div><div class="line">        writelines(sequence_of_strings) -&gt; None.  Write the strings to the file.</div><div class="line">         </div><div class="line">        Note that newlines are not added.  The sequence can be any iterable object</div><div class="line">        producing strings. This is equivalent to calling write() for each string.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"> </div><div class="line">    def xreadlines(self): # real signature unknown; restored from __doc__</div><div class="line">        可用于逐行读取文件，非全部</div><div class="line">        """</div><div class="line">        xreadlines() -&gt; returns self.</div><div class="line">         </div><div class="line">        For backward compatibility. File objects now include the performance</div><div class="line">        optimizations previously implemented in the xreadlines module.</div><div class="line">        """</div><div class="line">        pass</div><div class="line"></div><div class="line">2.x</div></pre></td></tr></table></figure>
+<h5 id="3-x版本"><a href="#3-x版本" class="headerlink" title="3.x版本"></a>3.x版本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextIOWrapper</span><span class="params">(_TextIOBase)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Character and line based layer over a BufferedIOBase object, buffer.</div><div class="line">    </div><div class="line">    encoding gives the name of the encoding that the stream will be</div><div class="line">    decoded or encoded with. It defaults to locale.getpreferredencoding(False).</div><div class="line">    </div><div class="line">    errors determines the strictness of encoding and decoding (see</div><div class="line">    help(codecs.Codec) or the documentation for codecs.register) and</div><div class="line">    defaults to "strict".</div><div class="line">    </div><div class="line">    newline controls how line endings are handled. It can be None, '',</div><div class="line">    '\n', '\r', and '\r\n'.  It works as follows:</div><div class="line">    </div><div class="line">    * On input, if newline is None, universal newlines mode is</div><div class="line">      enabled. Lines in the input can end in '\n', '\r', or '\r\n', and</div><div class="line">      these are translated into '\n' before being returned to the</div><div class="line">      caller. If it is '', universal newline mode is enabled, but line</div><div class="line">      endings are returned to the caller untranslated. If it has any of</div><div class="line">      the other legal values, input lines are only terminated by the given</div><div class="line">      string, and the line ending is returned to the caller untranslated.</div><div class="line">    </div><div class="line">    * On output, if newline is None, any '\n' characters written are</div><div class="line">      translated to the system default line separator, os.linesep. If</div><div class="line">      newline is '' or '\n', no translation takes place. If newline is any</div><div class="line">      of the other legal values, any '\n' characters written are translated</div><div class="line">      to the given string.</div><div class="line">    </div><div class="line">    If line_buffering is True, a call to flush is implied when a call to</div><div class="line">    write contains a newline character.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        关闭文件</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fileno</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        文件描述符  </div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flush</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        刷新文件内部缓冲区</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isatty</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        判断文件是否是同意tty设备</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        读取指定字节数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">readable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        是否可读</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">readline</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        仅读取一行数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seek</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        指定文件中指针位置</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seekable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        指针是否可操作</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        获取指针位置</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">truncate</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        截断数据，仅保留指定之前数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        是否可写</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        写内容</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getstate__</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="meta">    @staticmethod # known case of __new__</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(*args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Create and return a new object.  See help(type) for accurate signature. """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Implement next(self). """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        <span class="string">""" Return repr(self). """</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    buffer = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    closed = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    encoding = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    errors = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    line_buffering = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    name = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    newlines = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    _CHUNK_SIZE = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line">    _finalizing = property(<span class="keyword">lambda</span> self: object(), <span class="keyword">lambda</span> self, v: <span class="keyword">None</span>, <span class="keyword">lambda</span> self: <span class="keyword">None</span>)  <span class="comment"># default</span></div><div class="line"></div><div class="line"><span class="number">3.</span>x</div></pre></td></tr></table></figure>
+<h4 id="三、管理上下文"><a href="#三、管理上下文" class="headerlink" title="三、管理上下文"></a>三、管理上下文</h4><p>为了避免打开文件后忘记关闭，可以通过管理上下文，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'log'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    ...</div></pre></td></tr></table></figure>
+<p>如此方式，当with代码块执行完毕时，内部会自动关闭并释放文件资源。</p>
+<p>在Python 2.7 及以后，with又支持同时对多个文件的上下文进行管理，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'log1'</span>) <span class="keyword">as</span> obj1, open(<span class="string">'log2'</span>) <span class="keyword">as</span> obj2:</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><p>学习条件运算时，对于简单的 if else 语句，可以使用三元运算来表示，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 普通条件语句</span></div><div class="line"><span class="keyword">if</span> <span class="number">1</span> == <span class="number">1</span>:</div><div class="line">    name = <span class="string">'wupeiqi'</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    name = <span class="string">'alex'</span></div><div class="line">    </div><div class="line"><span class="comment"># 三元运算</span></div><div class="line">name = <span class="string">'wupeiqi'</span> <span class="keyword">if</span> <span class="number">1</span> == <span class="number">1</span> <span class="keyword">else</span> <span class="string">'alex'</span></div></pre></td></tr></table></figure>
+<p>对于简单的函数，也存在一种简便的表示方式，即：lambda表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ########### 普通函数 ###########</span></div><div class="line"><span class="comment"># 定义函数（普通方式）</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(arg)</span>:</span></div><div class="line">    <span class="keyword">return</span> arg + <span class="number">1</span></div><div class="line">    </div><div class="line"><span class="comment"># 执行函数</span></div><div class="line">result = func(<span class="number">123</span>)</div><div class="line">    </div><div class="line"><span class="comment"># ########### lambda ############</span></div><div class="line">    </div><div class="line"><span class="comment"># 定义函数（lambda表达式）</span></div><div class="line">my_lambda = <span class="keyword">lambda</span> arg : arg + <span class="number">1</span></div><div class="line">    </div><div class="line"><span class="comment"># 执行函数</span></div><div class="line">result = my_lambda(<span class="number">123</span>)</div></pre></td></tr></table></figure>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>利用函数编写如下数列：</p>
+<p>斐波那契数列指的是这样一个数列 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(arg1,arg2)</span>:</span></div><div class="line">    <span class="keyword">if</span> arg1 == <span class="number">0</span>:</div><div class="line">        <span class="keyword">print</span> arg1, arg2</div><div class="line">    arg3 = arg1 + arg2</div><div class="line">    <span class="keyword">print</span> arg3</div><div class="line">    func(arg2, arg3)</div><div class="line">  </div><div class="line">func(<span class="number">0</span>,<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p>1、简述普通参数、指定参数、默认参数、动态参数的区别</p>
+<p>2、写函数，计算传入字符串中【数字】、【字母】、【空格] 以及 【其他】的个数</p>
+<p>3、写函数，判断用户传入的对象（字符串、列表、元组）长度是否大于5。</p>
+<p>4、写函数，检查用户传入的对象（字符串、列表、元组）的每一个元素是否含有空内容。</p>
+<p>5、写函数，检查传入列表的长度，如果大于2，那么仅保留前两个长度的内容，并将新内容返回给调用者。</p>
+<p>6、写函数，检查获取传入列表或元组对象的所有奇数位索引对应的元素，并将其作为新列表返回给调用者。</p>
+<p>7、写函数，检查传入字典的每一个value的长度,如果大于2，那么仅保留前两个长度的内容，并将新内容返回给调用者。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dic = &#123;<span class="string">"k1"</span>: <span class="string">"v1v1"</span>, <span class="string">"k2"</span>: [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>]&#125;</div><div class="line">PS:字典中的value只能是字符串或列表</div></pre></td></tr></table></figure>
+<p>8、写函数，利用递归获取斐波那契数列中的第 10 个数，并将该值返回给调用者。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/webchat-reward.jpg" alt="Yaro WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7u2o1q.com1.z0.glb.clouddn.com/alipay-reward.jpg" alt="Yaro Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/15/第2篇-Py基础-基本数据类型/" rel="next" title="第2篇-Py基础-基本数据类型">
+                <i class="fa fa-chevron-left"></i> 第2篇-Py基础-基本数据类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/15/第4篇-Py基础-杂货铺/" rel="prev" title="第4篇-Py基础-杂货铺">
+                第4篇-Py基础-杂货铺 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/15/第3篇-Py基础-函数/"
+           data-title="第3篇-Py基础-函数" data-url="http://yoursite.com/2017/07/15/第3篇-Py基础-函数/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7u2o1q.com1.z0.glb.clouddn.com/Yaro%E5%A4%B4%E5%83%8F1.png"
+               alt="Yaro" />
+          <p class="site-author-name" itemprop="name">Yaro</p>
+          <p class="site-description motion-element" itemprop="description">生活=不断尝试,不断犯错</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaro97" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wyzh97" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mryaro" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#三元运算"><span class="nav-number">1.</span> <span class="nav-text">三元运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型补充"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set集合"><span class="nav-number">2.1.</span> <span class="nav-text">set集合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深浅拷贝"><span class="nav-number">3.</span> <span class="nav-text">深浅拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、数字和字符串"><span class="nav-number">3.1.</span> <span class="nav-text">一、数字和字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、其他基本数据类型"><span class="nav-number">3.2.</span> <span class="nav-text">二、其他基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、赋值"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、赋值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、浅拷贝"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、浅拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、深拷贝"><span class="nav-number">3.2.3.</span> <span class="nav-text">3、深拷贝</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">4.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、背景"><span class="nav-number">4.1.</span> <span class="nav-text">一、背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、定义和使用"><span class="nav-number">4.2.</span> <span class="nav-text">二、定义和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、返回值"><span class="nav-number">4.2.1.</span> <span class="nav-text">1、返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、参数"><span class="nav-number">4.2.2.</span> <span class="nav-text">2、参数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#普通参数："><span class="nav-number">4.2.2.1.</span> <span class="nav-text">普通参数：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#默认参数"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#动态参数"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">动态参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#扩展：发送邮件实例"><span class="nav-number">4.2.2.4.</span> <span class="nav-text">扩展：发送邮件实例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置函数"><span class="nav-number">5.</span> <span class="nav-text">内置函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#open函数"><span class="nav-number">6.</span> <span class="nav-text">open函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、打开文件"><span class="nav-number">6.1.</span> <span class="nav-text">一、打开文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、操作"><span class="nav-number">6.2.</span> <span class="nav-text">二、操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-x版本"><span class="nav-number">6.2.1.</span> <span class="nav-text">2.x版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-x版本"><span class="nav-number">6.2.2.</span> <span class="nav-text">3.x版本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、管理上下文"><span class="nav-number">6.3.</span> <span class="nav-text">三、管理上下文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda表达式"><span class="nav-number">7.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归"><span class="nav-number">8.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习题"><span class="nav-number">9.</span> <span class="nav-text">练习题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yaro</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yaro97githubio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
